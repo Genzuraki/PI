@@ -1,0 +1,21 @@
+{% extends 'agendamento/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+</head>
+<body>
+    <h1>INSIRA OS DADOS NOS CAMPOS ABAIXO</h1>
+ <form method="POST"> 
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Salvar</button>
+
+</form>
+</body>
+</html>
+{% endif %}
+{% endblock %}

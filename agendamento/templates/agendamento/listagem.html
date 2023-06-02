@@ -1,0 +1,20 @@
+{% extends 'agendamento/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <body>
+        <h1>Meus Agendamentos</h1>
+
+        <table border="1">
+        <tr><th>cliente</th><th>descricao</th><th>data_entrada</th><th>tempo_execucao_servico</th></tr>
+            {% for c in agendamento %}
+            <tr><td>{{ c.cliente }}</td><td>{{c.descricao}}</td><td>{{c.data_entrada|date:'d-m-Y'}}</td><td>{{c.tempo_execucao_servico}}</td></tr>
+            {% endfor %}
+        </table>
+        <button><a href="/nova/">Novo agendamento</a></button>
+        <button><a href="/home/">voltar</a></button>
+    </body>
+    {% endif %}
+{% endblock %}

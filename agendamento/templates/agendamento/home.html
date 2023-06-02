@@ -1,0 +1,20 @@
+{% extends 'agendamento/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Olá, {{ user.username }}!</h1>
+  <form> 
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button><a href="/meusdados/">Meus Dados</a></button>
+    <br><br><button><a href="/list/">Meus agendamentos</a></button>    
+    <br><br><button><a href="/accounts/login">Sair</a></button>
+</form>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}

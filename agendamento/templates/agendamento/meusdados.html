@@ -1,0 +1,29 @@
+{% extends 'agendamento/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <body>
+        <center><h1>Meus Dados</h1>
+
+        <table border ="1">
+        <tr><th>nome</th><th>sexo</th><th>cpf</th></tr>
+            {% for c in meusdados %}
+            <tr><td>{{ c.nome }}</td><td>{{c.sexo}}</td><td>{{c.cpf}}</td></tr>
+            {% endfor %}
+        </table>
+
+        <h1>Meus Veículo</h1>
+
+        <table border ="1">
+            <tr><th>placa</th><th>fabricante</th><th>modelo</th><th>ano</th></tr>
+                {% for c in meuveiculo %}
+                <tr><td>{{ c.placa_veiculo }}</td><td>{{c.fabricante}}</td><td>{{c.modelo}}</td><td>{{c.ano_fabricacao}}</td></tr>
+                {% endfor %}
+            </table>
+
+        <button><a href="/home/">voltar</a></button></center>
+    </body>
+    {% endif %}
+{% endblock %}
